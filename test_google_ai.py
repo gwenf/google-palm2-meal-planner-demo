@@ -34,6 +34,16 @@ def streaming_prediction(
     )
     for response in responses:
         print(response)
+    responses = chat.send_message_streaming(
+        message="What day is it?", **parameters
+    )
+    for response in responses:
+        print(response)
+    responses = chat.send_message_streaming(
+        message="Who is Danny 3-2-1?", **parameters
+    )
+    for response in responses:
+        print(response)
 
 
 if __name__ == "__main__":
