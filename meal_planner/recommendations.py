@@ -1,3 +1,10 @@
+# TODO:
+# 1. Get the AI to fetch a summary of recommendations and you can select one
+# 2. Then send the selection back to the AI for a list of ingredients and what
+# you need to buy
+# 3. Save the receipe into the database
+# 4. Allow the user to rate the recipe to give feedback to the AI
+
 import sqlite3
 
 from meal_planner.google_ai_interface import initialize_chat
