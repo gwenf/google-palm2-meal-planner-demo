@@ -1,13 +1,20 @@
 import sqlite3
+from meal_planner.helpers import (
+    get_active_user_id,
+)
 
 DATABASE_PATH = "foodieaidvisor.db"
 
 
 def onboard_user():
-    """Gather initial user preferences and dietary restrictions."""
+    """Gather initial user preferences, dietary restrictions, and ingredients for the active user."""
 
-    # Ask the user for their details
-    username = input("Enter your username: ").strip()
+    user_id = get_active_user_id()
+    if not user_id:
+        print("No active user found. Please select or create a user first.")
+        return
+
+    # Ask the user for their preferences and dietary restrictions
     preferences = input(
         "What are your favorite cuisines or dishes? (e.g. Italian, Sushi): "
     ).strip()
@@ -15,19 +22,33 @@ def onboard_user():
         "Do you have any dietary restrictions? (e.g. Vegetarian, Gluten-free): "
     ).strip()
 
-    # Store the user details in the database
+    # Update the user details in the database
     with sqlite3.connect(DATABASE_PATH) as conn:
         cursor = conn.cursor()
-        try:
+        cursor.execute(
+            """
+            UPDATE users 
+            SET preferences = ?, dietary_restrictions = ?
+            WHERE id = ?
+            """,
+            (preferences, dietary_restrictions, user_id),
+        )
+
+        # Prompt the user to add ingredients to their inventory
+        while True:
+            ingredient = input(
+                "Enter an ingredient you'd like to add (or 'done' to finish): "
+            ).strip()
+            if ingredient.lower() == "done":
+                break
             cursor.execute(
                 """
-                INSERT INTO users (username, preferences, dietary_restrictions)
-                VALUES (?, ?, ?)
+                INSERT INTO ingredients (user_id, name)
+                VALUES (?, ?)
             """,
-                (username, preferences, dietary_restrictions),
+                (user_id, ingredient),
             )
-            print("User onboarded successfully!")
-        except sqlite3.IntegrityError:
-            print(
-                "Username already exists. Please choose a different username."
-            )
+
+        conn.commit()
+
+    print("User onboarded successfully!")

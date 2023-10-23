@@ -1,77 +1,74 @@
 # FoodieAIdvisor - An AI-powered terminal-based recipe advisor
-import sqlite3
-
-from colorama import init, Fore, Back, Style
-import pyfiglet
-from google.cloud import aiplatform
-from vertexai import preview
-
-from meal_planner.db_setup import setup_database
+from meal_planner.helpers import (
+    setup_terminal_ui,
+    select_user,
+)
 from meal_planner.user_preferences import (
     update_user_preferences,
     delete_user_preferences,
 )
 from meal_planner.onboarding import onboard_user
-
-DATABASE_PATH = "foodieaidvisor.db"
-
-# Global Setup
-# GOOGLE_API_ENDPOINT = "https://generativelanguage.googleapis.com/..."
-
-###
-# Initialization Functions
-###
-setup_database()
+from meal_planner.inventory_management import (
+    add_ingredients,
+    list_ingredients,
+    delete_ingredient,
+    set_expiration_date,
+)
+from meal_planner.recommendations import get_recommendations
 
 
-def setup_terminal_ui():
-    """Initialize colorama and other terminal UI settings."""
+def app():
+    setup_terminal_ui()
 
-    init(autoreset=True)
+    try:
+        active_user = select_user()
+        print(f"Welcome, {active_user}!")
 
-    # Display the ASCII header using PyFiglet
-    header = pyfiglet.figlet_format("FoodieAIdvisor", font="slant")
-    print(Fore.CYAN + header)
+        while True:
+            print("\nOptions:")
+            print("0. Recommendations")
+            print("1. Onboard")
+            print("2. Update Preferences")
+            print("3. Delete Preferences")
+            print("4. Add Ingredients")
+            print("5. List Ingredients")
+            print("6. Delete Ingredient")
+            print("7. Set Expiration Date for Ingredient")
+            print("8. Quit")
+            print("Enter 'help' to see more details.\n")
 
-    print(
-        Fore.GREEN
-        + "Welcome to FoodieAIdvisor - Your AI-powered Recipe Advisor!"
-    )
-    print(Fore.YELLOW + "Enter 'help' anytime to see available commands.\n")
+            choice = input("Enter your choice: ").strip().lower()
 
+            if choice == "help":
+                print("Help is on the way!")
+            elif choice == "0":
+                print(
+                    "Get recommendations based off of your current inventory and tastes."
+                )
+                cuisine = input(
+                    "Enter the cuisine that you would like to eat right now: "
+                ).strip()
+                get_recommendations(cuisine)
 
-# User Management Functions
+            elif choice in ["1", "onboard"]:
+                onboard_user()
+            elif choice in ["2", "update preferences"]:
+                update_user_preferences()
+            elif choice in ["3", "delete preferences"]:
+                delete_user_preferences()
+            elif choice in ["4", "add ingredients"]:
+                add_ingredients()
+            elif choice in ["5", "list ingredients"]:
+                list_ingredients()
+            elif choice in ["6", "delete ingredient"]:
+                delete_ingredient()
+            elif choice in ["7", "set expiration"]:
+                set_expiration_date()
+            elif choice in ["8", "q", "quit"]:
+                print("Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please try again.")
 
-
-# Inventory Management Functions
-
-# def add_ingredients():
-#     """Allow the user to add ingredients to their inventory."""
-
-# def list_ingredients():
-#     """List all ingredients in the user's inventory."""
-
-# def delete_ingredient():
-#     """Allow the user to delete an ingredient from their inventory."""
-
-# def set_expiration_date():
-#     """Allow the user to set expiration dates for ingredients."""
-
-
-# Recipe Recommendation Functions
-
-# def get_recommendations():
-#     """Fetch recipe recommendations based on user preferences and inventory."""
-
-# def select_recipe():
-#     """Let the user select a preferred recipe from recommendations."""
-
-# def rate_recipe():
-#     """Allow the user to rate a recipe after trying it."""
-
-
-# Google Palm API Integration
-
-# def fetch_from_google_palm(prompt):
-#     """Fetch results from Google's Palm API."""
-#     # Use the google-cloud-python client to communicate with the API
+    except KeyboardInterrupt:
+        print("\nExiting FoodieAIdvisor... Goodbye!")
