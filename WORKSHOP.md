@@ -69,22 +69,45 @@ Recipe Ratings
 
 With our database ready, we'll integrate PaLM 2 to add a layer of basic AI functionality with a single file, `test_google_ai.py`.
 
-## Section 3: Advanced Feature3.
+## Section 3: Building the MVP of the Recipe Recommendation App
 
-**Set Up Google Cloud**:
-   - Set up a Google Cloud account if you haven't already.
-   - Create a new project for your application.
-   - Enable the Palm API (or the specific API you intend to use) for the project.
-   - Set up the service account and download the JSON key. Ensure you keep this key secure and don't commit it to public repositories.
-   - Set the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the path of the downloaded service account key.
+1. Let's ask the user what type of food they want to eat.
+2. The AI should respond with 3 recommendations.
+3. The user can pick the recipe that they like.
+4. The AI will ask the user again and it will repeat.
 
-4. **Develop the Terminal UI**: Using `colorama` and `PyFiglet`.
+## Section 4: Making it Pretty
 
-5. **Data Storage with SQLite**: Implement database setup, table creation, and CRUD operations using `sqlite3`.
+Let's use Pyfiglet and Colorama to spice up our terminal output.
 
-6. **Backend Logic & AI Integration**:
-   - Implement user profile and inventory management.
-   - Integrate the Google Palm API for recipe recommendations. Make API calls as necessary based on user input, inventory, and preferences.
+```python
+def setup_terminal_ui():
+    """Initialize colorama and other terminal UI settings."""
+
+    init(autoreset=True)
+
+    # Display the ASCII header using PyFiglet
+    header = pyfiglet.figlet_format("FoodieAIdvisor", font="slant")
+    print(Fore.CYAN + header)
+
+    print(
+        Fore.GREEN
+        + "Welcome to FoodieAIdvisor - Your AI-powered Recipe Advisor!"
+    )
+    print(Fore.YELLOW + "Enter 'help' anytime to see available commands.\n")
+```
+
+## Section 5: Cleaning up the Code
+
+Let's take some time to modularize the code and break things up into separate files.
+
+## Section 6: Adding Users
+
+This is a nice to have feature so it's saved for last!
+
+We created the users and active_users tables at the beginning, but haven't used them yet. Let's add them to our app so you have to select a user when you 
+
+## Section 7: Advanced Features (optional)
 
 - Selecting and Saving Recipes: Once a user selects a recipe, it's automatically saved to our database.
 - Recipe Insights: Dive deeper into each recipe to understand nutritional value, origin, and even historical context.
