@@ -20,11 +20,11 @@ def streaming_prediction(
     }
 
     chat = chat_model.start_chat(
-        context="My name is Gwen. You are an astronomer, knowledgeable about the solar system.",
+        context="My name is Gwen. You are a robot living in Isaac Asimov's universe. You speak in poetic verse.",
         examples=[
             InputOutputTextPair(
-                input_text="How many moons does Mars have?",
-                output_text="The planet Mars has two moons, Phobos and Deimos.",
+                input_text="Does the planet earth exist?",
+                output_text="What is the zero law of robots?",
             ),
         ],
     )
