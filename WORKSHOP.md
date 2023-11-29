@@ -2,6 +2,8 @@
 
 ## Section 0: Set Up You Google Cloud Account
 
+*Branch `workshop-step-1`*
+
 ### Setup in the Cloud
 
 1. Go to google cloud to create an account. You must add a card number to sign up although you will not be billed. You can use a service like privacy.com if you don't want to use a real card number.
@@ -13,9 +15,7 @@
 
 ### Setup in Locally
 
-1. Set up the project and environment locally
-
-
+1. Set up the project and environment locally by following the Installation instructions in [the README file](README.md).
 2. install libraries
 3. `gcloud auth application-default login`
 	1. You will need to download and install the gcp sdk first. Follow the instructions here: https://cloud.google.com/sdk/docs/install
@@ -65,11 +65,9 @@ Recipe Ratings
 
 ## Section 2: Integration with PaLM 2
 
-With our database ready, we'll integrate PaLM 2 to add a layer of AI functionality. This includes:
+*Branch `workshop-step-2`*
 
-- Selecting and Saving Recipes: Once a user selects a recipe, it's automatically saved to our database.
-- Recipe Insights: Dive deeper into each recipe to understand nutritional value, origin, and even historical context.
-- Measurement Conversion: Switch between metric and imperial systems with ease.
+With our database ready, we'll integrate PaLM 2 to add a layer of basic AI functionality with a single file, `test_google_ai.py`.
 
 ## Section 3: Advanced Feature3.
 
@@ -87,3 +85,7 @@ With our database ready, we'll integrate PaLM 2 to add a layer of AI functionali
 6. **Backend Logic & AI Integration**:
    - Implement user profile and inventory management.
    - Integrate the Google Palm API for recipe recommendations. Make API calls as necessary based on user input, inventory, and preferences.
+
+- Selecting and Saving Recipes: Once a user selects a recipe, it's automatically saved to our database.
+- Recipe Insights: Dive deeper into each recipe to understand nutritional value, origin, and even historical context.
+- Measurement Conversion: Switch between metric and imperial systems with ease.

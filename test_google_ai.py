@@ -33,17 +33,17 @@ def streaming_prediction(
         message="How many planets are there in the solar system?", **parameters
     )
     for response in responses:
-        print(response)
+        print(response.text)
     responses = chat.send_message_streaming(
         message="What day is it?", **parameters
     )
     for response in responses:
-        print(response)
+        print(response.text)
     responses = chat.send_message_streaming(
         message="Who is R2D2?", **parameters
     )
     for response in responses:
-        print(response)
+        print(response.text)
 
 
 if __name__ == "__main__":

@@ -15,6 +15,7 @@
 | Term | Definition |
 |------|------------|
 | `vertexai` | A Python library used for interacting with Google Cloud's Vertex AI services. It simplifies the process of deploying and using machine learning models. |
+| `Maker Suite` | A GUI for working with AI models like PaLM 2 from your browser. |
 | `ChatModel` | A class within the Vertex AI library that represents a conversational AI model. It's used to create chatbots or conversational agents. |
 | `from_pretrained` | A method used to load a pre-trained model. This allows users to utilize models that have already been trained on large datasets, saving time and computational resources. |
 | `streaming_prediction` | A function or method in AI programming that continuously processes data in real-time, as opposed to batch processing. |
