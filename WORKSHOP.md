@@ -70,4 +70,19 @@ With our database ready, we'll integrate PaLM 2 to add a layer of AI functionali
 - Recipe Insights: Dive deeper into each recipe to understand nutritional value, origin, and even historical context.
 - Measurement Conversion: Switch between metric and imperial systems with ease.
 
-## Section 3: Advanced Features
+## Section 3: Advanced Feature3.
+
+**Set Up Google Cloud**:
+   - Set up a Google Cloud account if you haven't already.
+   - Create a new project for your application.
+   - Enable the Palm API (or the specific API you intend to use) for the project.
+   - Set up the service account and download the JSON key. Ensure you keep this key secure and don't commit it to public repositories.
+   - Set the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the path of the downloaded service account key.
+
+4. **Develop the Terminal UI**: Using `colorama` and `PyFiglet`.
+
+5. **Data Storage with SQLite**: Implement database setup, table creation, and CRUD operations using `sqlite3`.
+
+6. **Backend Logic & AI Integration**:
+   - Implement user profile and inventory management.
+   - Integrate the Google Palm API for recipe recommendations. Make API calls as necessary based on user input, inventory, and preferences.
