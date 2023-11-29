@@ -1,5 +1,5 @@
 # TODO:
-# 1. Get the AI to fetch a summary of recommendations and you can select one
+# 1. ~~Get the AI to fetch a summary of recommendations and you can select one~~
 # 2. Then send the selection back to the AI for a list of ingredients and what
 # you need to buy
 # 3. Save the receipe into the database
@@ -73,7 +73,8 @@ def select_recipe():
     selected_recipe = recommendations[choice - 1]
     print(f"You selected: {selected_recipe}")
 
-    # You might want to do something more with the selected recipe, e.g., show details, steps, etc.
+    # TODO: show the ingredients and instructions for the selected recipe
+
     return selected_recipe
 
 
@@ -94,5 +95,3 @@ def rate_recipe():
             (recipe_name, rating),
         )
         print(f"Thanks for rating {recipe_name}!")
-
-    # Assuming there's a table called `recipe_ratings` with columns `recipe_name` and `rating`.
