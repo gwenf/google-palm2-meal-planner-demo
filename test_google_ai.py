@@ -40,7 +40,7 @@ def streaming_prediction(
     for response in responses:
         print(response)
     responses = chat.send_message_streaming(
-        message="Who is Danny 3-2-1?", **parameters
+        message="Who is R2D2?", **parameters
     )
     for response in responses:
         print(response)
