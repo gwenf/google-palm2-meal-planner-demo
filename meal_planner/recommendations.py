@@ -36,7 +36,6 @@ def get_recommendations(cuisine_choice):
             "SELECT users.username, user_id, preferences, dietary_restrictions FROM active_user JOIN users ON active_user.user_id = users.id LIMIT 1"
         )
         user_data = cursor.fetchone()
-        print(user_data)
         if not user_data:
             print("Error: No active user found.")
             return []
@@ -48,58 +47,20 @@ def get_recommendations(cuisine_choice):
             dietary_restrictions,
         ) = user_data
         context = f"My name is {active_username}. I like {preferences}. I have {dietary_restrictions} dietary restrictions. The cuisine I'm craving right now is {cuisine_choice}."
-        print(active_username)
 
     chat, parameters = initialize_chat(
         "swift-analogy-399402", "us-central1", active_user_id
     )
     responses = chat.send_message_streaming(message=context, **parameters)
+    print("Recommendations:")
+    print(responses)
 
     recommendations = []
     for response in responses:
-        print(response.text)
-        recommendations.append(response.text)
+        print(response)
+        recommendations.append(response)
 
     return recommendations
-
-
-# def get_recommendations(cuisine_choice):
-#     """Fetch recipe recommendations based on user preferences and inventory."""
-#     print("Fetching recommendations...")
-#     print(cuisine_choice)
-
-#     with sqlite3.connect(DATABASE_PATH) as conn:
-#         cursor = conn.cursor()
-
-#         # Fetch the active user's username from the active_user table
-#         cursor.execute("SELECT username FROM active_user LIMIT 1")
-#         active_username = cursor.fetchone()
-#         if not active_username:
-#             print("Error: No active user found.")
-#             return []
-
-#         # Get the user_id for the active user
-#         cursor.execute(
-#             "SELECT id FROM users WHERE username=?", (active_username[0],)
-#         )
-#         user_id = cursor.fetchone()
-#         if not user_id:
-#             print(f"Error: User ID for {active_username[0]} not found.")
-#             return []
-
-#     chat, parameters = initialize_chat(
-#         "swift-analogy-399402", "us-central1", user_id[0]
-#     )
-#     responses = chat.send_message_streaming(
-#         message=f"The cuisine I'm craving right now is {cuisine_choice}",
-#         **parameters,
-#     )
-#     for response in responses:
-#         # print(response)
-#         # print(type(response))
-#         print(response.text)
-#         # print(response.__dict__)
-#     return responses
 
 
 def select_recipe():
