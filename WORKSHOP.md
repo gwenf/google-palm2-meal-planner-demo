@@ -13,10 +13,10 @@
    - https://makersuite.google.com/u/1/app/apikey
 4. Create an object storage bucket in Google cloud
 
-### Setup in Locally
+### Setup Locally
 
 1. Set up the project and environment locally by following the Installation instructions in [the README file](README.md).
-2. install libraries
+2. Install dependencies
 3. `gcloud auth application-default login`
 	1. You will need to download and install the gcp sdk first. Follow the instructions here: https://cloud.google.com/sdk/docs/install
 	2. Log in with this in your terminal: ``./bin/gcloud init`
