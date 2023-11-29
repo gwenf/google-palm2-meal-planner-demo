@@ -21,6 +21,11 @@ An AI-powered, interactive terminal application designed to manage your ingredie
 
 ### Installation
 
+Make sure Python is installed on your computer. This project has been tested with Python version 3.11.
+
+Check your Python version:
+`python --version`
+
 1. Clone the repository:
 
 ```
@@ -28,22 +33,35 @@ git clone https://github.com/yourusername/FoodieAIdvisor.git
 cd FoodieAIdvisor
 ```
 
-2. Install required packages:
+2. Create a virtual environment:
 
+```
+python -m venv venv
+source venv/bin/activate
+```
+
+3. Install required packages:
+
+With Pip:
 ```
 pip install -r requirements.txt
 ```
 
-3. Run the `db_setup.py` to set up the SQLite database:
+With Poetry (make sure Poetry is installed on your system):
+```
+poetry install
+```
+
+4. Run the `db_setup.py` to set up the SQLite database:
 
 ```
 python meal_planner/db_setup.py
 ```
 
-4. Start the terminal application:
+5. Start the terminal application:
 
 ```
-python app.py
+python main.py
 ```
 
 *Remember to replace placeholder URLs, paths, and other specifics with actual details of your project.*
