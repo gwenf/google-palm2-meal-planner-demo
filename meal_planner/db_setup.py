@@ -74,6 +74,16 @@ def setup_database():
     """
     )
 
+    cursor.execute(
+        """
+    CREATE TABLE IF NOT EXISTS recipe_ratings (
+        id INTEGER PRIMARY KEY,
+        recipe_name TEXT NOT NULL,
+        rating INTEGER NOT NULL
+    )
+    """
+    )
+
     conn.commit()
     conn.close()
 
