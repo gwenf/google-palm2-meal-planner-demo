@@ -3,6 +3,7 @@
 ## Section 0: Set Up You Google Cloud Account
 
 ### Setup in the Cloud
+
 1. Go to google cloud to create an account. You must add a card number to sign up although you will not be billed. You can use a service like privacy.com if you don't want to use a real card number.
 2. Look at the project you are using. Something like catdog-dogcat-765432 (My First Project)
 3. Get you API keys from google cloud: 
@@ -11,6 +12,7 @@
 4. Create an object storage bucket in Google cloud
 
 ### Setup in Locally
+
 1. Set up project and environment
 2. install libraries
 3. `gcloud auth application-default login`
@@ -23,6 +25,42 @@
 
 1. Set up the app locally by following the instructions in [README.md](README.md)
 2. Next, set up the database to store our recipes and ingredients. This will hold crucial information like ingredients, preparation steps, and serving size.
+
+### Schema
+
+Users
+
+- id: INTEGER (Primary Key)
+- username: TEXT (Not Null, Unique)
+- dietary_restrictions: TEXT
+- preferences: TEXT
+
+Active User
+
+- id: INTEGER (Primary Key)
+- user_id: INTEGER (Foreign Key referencing Users.id)
+- username: TEXT (Not Null)
+
+Ingredients
+
+- id: INTEGER (Primary Key)
+- user_id: INTEGER (Foreign Key referencing Users.id)
+- name: TEXT (Not Null)
+- expiration_date: DATE
+
+Recipes
+
+- id: INTEGER (Primary Key)
+- user_id: INTEGER (Foreign Key referencing Users.id)
+- name: TEXT (Not Null)
+- ingredients: TEXT
+- instructions: TEXT
+
+Recipe Ratings
+
+- id: INTEGER (Primary Key)
+- recipe_name: TEXT (Not Null)
+- rating: INTEGER (Not Null)
 
 ## Section 2: Integration with PaLM 2
 
