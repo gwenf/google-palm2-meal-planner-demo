@@ -22,3 +22,15 @@
 | `location` | Refers to the geographical location or region of the cloud servers where the AI model is deployed or accessed. |
 | `init` | A method used to initialize a setup, in this case, setting up the Vertex AI with project and location details. |
 | `send_message_streaming` | A method to send a message to a conversational AI model and receive a response in a streaming fashion, useful for real-time interactions. |
+
+## Database Definitions
+
+| Term | Definition |
+|------|------------|
+| `SQLite` | A lightweight, disk-based database that doesn't require a separate server process. SQLite is a popular choice for local/client storage in application software. |
+| `Cursor` | An object used in databases to execute SQL queries and fetch results. It acts as a pointer to the rows returned by a query, allowing you to read and manipulate the data. |
+| `Connection` | A Connection object that represents the database connection. It's used to execute SQL commands and interact with the database. |
+| `Table` | In a database, a table is a collection of related data held in a structured format within a database. It consists of rows and columns. |
+| `Row` | A single record in a database table, representing a single, implicitly structured data item in a table. |
+| `Column` | A set of data values of a particular simple type in a database, one for each row of the table. The column essentially defines the data that can be stored in each row. |
+

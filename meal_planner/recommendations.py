@@ -33,18 +33,25 @@ def get_recommendations(cuisine_choice):
 
         # Fetch the active user's username and preferences
         cursor.execute(
-            "SELECT username, preferences, dietary_restrictions FROM active_user JOIN users ON active_user.username = users.username LIMIT 1"
+            "SELECT users.username, user_id, preferences, dietary_restrictions FROM active_user JOIN users ON active_user.user_id = users.id LIMIT 1"
         )
         user_data = cursor.fetchone()
+        print(user_data)
         if not user_data:
             print("Error: No active user found.")
             return []
 
-        active_username, preferences, dietary_restrictions = user_data
+        (
+            active_username,
+            active_user_id,
+            preferences,
+            dietary_restrictions,
+        ) = user_data
         context = f"My name is {active_username}. I like {preferences}. I have {dietary_restrictions} dietary restrictions. The cuisine I'm craving right now is {cuisine_choice}."
+        print(active_username)
 
     chat, parameters = initialize_chat(
-        "swift-analogy-399402", "us-central1", active_username
+        "swift-analogy-399402", "us-central1", active_user_id
     )
     responses = chat.send_message_streaming(message=context, **parameters)
 
