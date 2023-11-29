@@ -13,18 +13,19 @@
 
 ### Setup in Locally
 
-1. Set up project and environment
+1. Set up the project and environment locally
+
+
 2. install libraries
 3. `gcloud auth application-default login`
 	1. You will need to download and install the gcp sdk first. Follow the instructions here: https://cloud.google.com/sdk/docs/install
-	2. Login with this: ``./bin/gcloud init`
+	2. Log in with this in your terminal: ``./bin/gcloud init`
 	3. Put it in your path if you want: `export PATH=$PATH:~/google-cloud-sdk/bin`
 	4. After successful auth: https://cloud.google.com/sdk/auth_success
 
 ## Section 1: Set up the Database
 
-1. Set up the app locally by following the instructions in [README.md](README.md)
-2. Next, set up the database to store our recipes and ingredients. This will hold crucial information like ingredients, preparation steps, and serving size.
+Next, set up the database to store our recipes and ingredients. This will hold crucial information like ingredients, preparation steps, and serving size.
 
 ### Schema
 
