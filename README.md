@@ -2,7 +2,8 @@
 
 An AI-powered, interactive terminal application designed to manage your ingredients inventory, understand your personal tastes, and recommend recipes that tantalize your palate while reducing food waste.
 
-![FoodieAIdvisor Logo](path/to/logo/if/you/have/one.png)
+![Workshop steps if you are following along.](WORKSHOP.md)
+![Definitions for terms used in, and related to, this project.](DEFINITIONS.md)
 
 ## Features
 
