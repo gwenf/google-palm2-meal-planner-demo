@@ -71,6 +71,8 @@ With our database ready, we'll integrate PaLM 2 to add a layer of basic AI funct
 
 ## Section 3: Building the MVP of the Recipe Recommendation App
 
+*Branch `workshop-step-3`*
+
 1. Let's ask the user what type of food they want to eat.
 2. The AI should respond with 3 recommendations.
 3. The user can pick the recipe that they like.
